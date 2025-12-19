@@ -180,14 +180,14 @@ const App: React.FC = () => {
       doc.text(stepLines, margin + 10, y, { align: 'left', maxWidth: contentWidth - 15 });
       y += (stepLines.length * 5.5) + 6;
       
-      if (y > 210) {
+      if (y > 200) { // Ajuste para asegurar que no se amontone al final
         doc.addPage();
         y = 30;
       }
     });
 
-    // Subir el bloque 1 cm (10 unidades) para que no toque el fondo
-    y = Math.max(y + 10, 210);
+    // Subir el bloque 1 cm adicional (ajustado de 210 a 200 para dar más aire al fondo)
+    y = Math.max(y + 10, 200);
 
     // Bloque Contacto Premium
     doc.setFillColor(248, 250, 252);
