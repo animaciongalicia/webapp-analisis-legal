@@ -150,19 +150,19 @@ const App: React.FC = () => {
 
     // --- PÁGINA 2: HOJA DE RUTA DETALLADA ---
     doc.addPage();
-    y = 30;
+    y = 25; // Subido 0.5cm (de 30 a 25)
 
     doc.setFont("helvetica", "bold");
     doc.setFontSize(16);
     doc.setTextColor(15, 23, 42);
     doc.text("3. Hoja de Ruta Sugerida", margin, y);
-    y += 10;
+    y += 9; // Reducido de 10 a 9
     
     doc.setFontSize(10.5);
     doc.setFont("helvetica", "normal");
     doc.setTextColor(71, 85, 105);
     doc.text("Recomendaciones profesionales para blindar su posición legal hoy mismo:", margin, y);
-    y += 15;
+    y += 12; // Reducido de 15 a 12
 
     // Pasos / Recomendaciones
     recommendation.nextSteps.forEach((step, i) => {
@@ -178,36 +178,35 @@ const App: React.FC = () => {
       doc.setTextColor(51, 65, 85);
       const stepLines = doc.splitTextToSize(step, contentWidth - 15);
       doc.text(stepLines, margin + 10, y, { align: 'left', maxWidth: contentWidth - 15 });
-      y += (stepLines.length * 5.5) + 6;
+      y += (stepLines.length * 5.5) + 4.5; // Reducido de 6 a 4.5 (1.5mm menos entre puntos)
       
-      if (y > 210) { // Aumentado ligeramente para permitir más contenido en la página
+      if (y > 225) { // Ajustado para aprovechar más la página
         doc.addPage();
         y = 30;
       }
     });
 
-    // Subido y ajustado para que quepa en la segunda página con menos margen
-    y = Math.max(y + 8, 205);
+    y = Math.max(y + 6, 198); // Reducido el margen superior del cajetín y el floor de 205 a 198
 
-    // Bloque Contacto Premium (REDUCIDO EN ALTURA)
+    // Bloque Contacto Premium
     doc.setFillColor(248, 250, 252);
     doc.setDrawColor(226, 232, 240);
-    doc.roundedRect(margin, y, contentWidth, 38, 2, 2, 'FD'); // Reducido de 50 a 38
+    doc.roundedRect(margin, y, contentWidth, 38, 2, 2, 'FD'); 
     
     y += 10;
     doc.setTextColor(15, 23, 42);
     doc.setFont("helvetica", "bold");
-    doc.setFontSize(11); // Reducido de 12 a 11
+    doc.setFontSize(11); 
     doc.text("Sesión de Auditoría Gratuita", margin + 8, y);
     
     y += 5;
     doc.setFont("helvetica", "normal");
-    doc.setFontSize(8.5); // Reducido de 9 a 8.5
+    doc.setFontSize(8.5); 
     doc.setTextColor(71, 85, 105);
     doc.text("Consulte este informe con nuestros abogados llamando al:", margin + 8, y);
     
     y += 11;
-    doc.setFontSize(16); // Reducido de 18 a 16
+    doc.setFontSize(16); 
     doc.setTextColor(15, 23, 42);
     doc.text("+881 89 39 92", margin + 8, y);
     
@@ -248,9 +247,16 @@ const App: React.FC = () => {
           <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
             <span className="inline-block px-3 py-1 rounded-full bg-indigo-50 text-indigo-600 text-[10px] font-bold uppercase mb-6 tracking-wider border border-indigo-100">Gratis y Confidencial</span>
             <h2 className="text-3xl font-black text-slate-900 mb-6 leading-tight">Obtén claridad sobre tu problema legal hoy mismo.</h2>
-            <p className="text-slate-600 mb-10 text-lg leading-relaxed font-medium">
-              Analizamos tu situación para darte una hoja de ruta preliminar y conectarte con el experto adecuado posteriormente.
-            </p>
+            
+            <div className="space-y-4 mb-10">
+              <p className="text-slate-600 text-lg leading-relaxed font-medium italic border-l-4 border-indigo-200 pl-4 bg-indigo-50/30 py-2 rounded-r-xl">
+                "No tienes por qué enfrentar esto a solas. Dar el primer paso requiere valentía, y estamos aquí para acompañarte."
+              </p>
+              <p className="text-slate-600 text-lg leading-relaxed font-medium">
+                Analizamos tu situación con total reserva para darte la hoja de ruta técnica que necesitas para recuperar tu tranquilidad.
+              </p>
+            </div>
+
             <button 
               onClick={next}
               className="group w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-5 rounded-2xl shadow-xl shadow-indigo-100 transition-all flex items-center justify-center gap-3 active:scale-[0.98]"
@@ -260,6 +266,7 @@ const App: React.FC = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
               </svg>
             </button>
+            <p className="text-center mt-6 text-slate-400 text-xs font-semibold">Tus datos están protegidos y el análisis es 100% privado.</p>
           </div>
         )}
 
