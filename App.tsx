@@ -180,41 +180,41 @@ const App: React.FC = () => {
       doc.text(stepLines, margin + 10, y, { align: 'left', maxWidth: contentWidth - 15 });
       y += (stepLines.length * 5.5) + 6;
       
-      if (y > 200) { // Ajuste para asegurar que no se amontone al final
+      if (y > 210) { // Aumentado ligeramente para permitir más contenido en la página
         doc.addPage();
         y = 30;
       }
     });
 
-    // Subir el bloque 1 cm adicional (ajustado de 210 a 200 para dar más aire al fondo)
-    y = Math.max(y + 10, 200);
+    // Subido y ajustado para que quepa en la segunda página con menos margen
+    y = Math.max(y + 8, 205);
 
-    // Bloque Contacto Premium
+    // Bloque Contacto Premium (REDUCIDO EN ALTURA)
     doc.setFillColor(248, 250, 252);
     doc.setDrawColor(226, 232, 240);
-    doc.roundedRect(margin, y, contentWidth, 50, 2, 2, 'FD');
+    doc.roundedRect(margin, y, contentWidth, 38, 2, 2, 'FD'); // Reducido de 50 a 38
     
-    y += 12;
+    y += 10;
     doc.setTextColor(15, 23, 42);
     doc.setFont("helvetica", "bold");
-    doc.setFontSize(12);
-    doc.text("Sesión de Auditoría Gratuita", margin + 10, y);
+    doc.setFontSize(11); // Reducido de 12 a 11
+    doc.text("Sesión de Auditoría Gratuita", margin + 8, y);
     
-    y += 6;
+    y += 5;
     doc.setFont("helvetica", "normal");
-    doc.setFontSize(9);
+    doc.setFontSize(8.5); // Reducido de 9 a 8.5
     doc.setTextColor(71, 85, 105);
-    doc.text("Consulte este informe con uno de nuestros abogados llamando al:", margin + 10, y);
+    doc.text("Consulte este informe con nuestros abogados llamando al:", margin + 8, y);
     
-    y += 12;
-    doc.setFontSize(18);
+    y += 11;
+    doc.setFontSize(16); // Reducido de 18 a 16
     doc.setTextColor(15, 23, 42);
-    doc.text("+881 89 39 92", margin + 10, y);
+    doc.text("+881 89 39 92", margin + 8, y);
     
-    doc.setFontSize(10);
+    doc.setFontSize(9);
     doc.setTextColor(100, 116, 139);
-    doc.text("consultas@moreirayfernandez.es", pageWidth - margin - 10, y - 4, { align: 'right' });
-    doc.text("www.moreirayfernandez.es", pageWidth - margin - 10, y + 2, { align: 'right' });
+    doc.text("consultas@moreirayfernandez.es", pageWidth - margin - 8, y - 3, { align: 'right' });
+    doc.text("www.moreirayfernandez.es", pageWidth - margin - 8, y + 2, { align: 'right' });
 
     // Footer P2
     doc.setFontSize(8);
